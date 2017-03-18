@@ -10,7 +10,7 @@ disturbanceHistoryPlot:   Code for plotting binary data for disturbance history 
 DisturbancePlotsbySite:    First attempt at trying to plot summersville data. Includes use of unique() function call to make plots by site, instead of by series. ggplots are basic, but could potentially be templates if useful?
 
 
-Download_itrdb:   final copy of code used to download itrdb data, includes making a dataframe of TRADER results and metadata
+Download_itrdb:   final copy of code used to download itrdb data, includes making a dataframe of TRADER results and metadata. Also includes code to correct issues with site depth per year.
 
 
 FacetRepeats:   Code from Alex to create multiple pages of facet repeats for plotting PGC per site. includes iterative subsetting and the basic facet plot. Also includes facettheme, courtesy of Alex

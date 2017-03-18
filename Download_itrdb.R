@@ -96,6 +96,41 @@ for(i in 1:length(fileList_Selection)) {
 write.csv(outputDf, file = "N://R_Files/All_ITRDB/ITRDB_Data_EastUSA.csv", row.names = FALSE)
 ITRDBdata <- read.csv("N://R_Files/Test3/ITRDB_Data.csv", header = TRUE)
 
+############################################################
+#  Fixing sample size/yr issue. Using raw files and rwl.stats() function call in dplR
+
+###  First step makes a dataframe with siteID and all years in which that site is recording
+df <- data.frame(NULL)
+for (i in 1:length[fileList_Selection]){
+  current <- read.rwl(fileList_Selection[i])
+  siteID <- gsub("^([a-z]{2}.*)\\.rwl", "\\1", fileList_Selection[i])
+  stat <- rwl.stats(current)  # this function produces a dataframe with stats for each series in a raw file
+  first <- min(stat$first)
+  last <- max(stat$last)
+  len <- first:last
+  siteIDvec <- rep(siteID, times=length(len))
+  da <- data.frame(year=len, siteID=siteIDvec)
+  df <- rbind(df, da)
+}
+
+
+##  Next, making a simple timeseries dataframe, with years, and n= number of sites recording in each year
+early <- min(df$year)
+late <- max(df$year)
+range <- early:late   #a vector with all the years our data represents
+
+
+timser <- data.frame(NULL)
+for (i in 1:length(range)){
+  al <- df$year
+  n <- length(which(al==range[i]))  
+  d <- data.frame(year=range[i], NumSitesRec=n)
+  timser <- rbind(timser, d)   ## timser is the sample depth (of sites) time series
+}
+
+#old <- read.csv("C://Users/Ruth/My Documents/R/ITRDB_Data/ITRDB_DatabySite.csv", header=TRUE)
+#fix <- left_join(yrs, old, by=c("year", "siteID"))
+
 ##################################################################################
 # Edited version of TRADER, lines 41-72
 growthAveragingALL<- function(data, name, releases=NULL,m1=10,m2=10, buffer=2, drawing=TRUE,
