@@ -1,0 +1,44 @@
+All Scripts as of 3/18/17 (on laptop):
+
+
+DataAnalysis:   Code for organizing summersville data, including separating CFX data from SLW data, computing tree means using dplR, and creating flat file from mean ring widths, metadata, and and TRADER results (for _CHANGE.CSV FILES and _RELEASES_YEARS_TOTAL.CSV FILES). Also includes links to possible reference CRN's from ITRDB and some basic data exploration code with dplR (spag plots, correlations, summary stats, etc.).
+
+
+disturbanceHistoryPlot:   Code for plotting binary data for disturbance history reconstruction. includes multiple sites, three levels, and line segments to represent crn length. attempt at adding moving average of % sites releasing per year...
+
+
+DisturbancePlotsbySite:    First attempt at trying to plot summersville data. Includes use of unique() function call to make plots by site, instead of by series. ggplots are basic, but could potentially be templates if useful?
+
+
+Download_itrdb:   final copy of code used to download itrdb data, includes making a dataframe of TRADER results and metadata
+
+
+FacetRepeats:   Code from Alex to create multiple pages of facet repeats for plotting PGC per site. includes iterative subsetting and the basic facet plot. Also includes facettheme, courtesy of Alex
+
+
+GCPlots:   plotting PGC/growth change in summersville data. mostly geom_density plots.
+
+
+ggplot_dualaxes:    Code from Alex for getting ggplot to plot two y axes. I have not gotten this to work yet, but it is probably most appropriate for two line graphs. combining graph types is probably more complicated because of finding the location of the plot grob details....
+
+
+MovingAverage:    Function for calculating moving average, from overstack.
+
+
+MultipleSites_TRADER_boundaryLineALL:   edited TRADER function for BL
+
+
+MultipleSites_TRADER_growthAveragingALL:    edited TRADER function for RGA. Possibly an old version?
+
+
+PracticMakingFunctions:   Simple examples of creating functions, from when I was editing TRADER code.
+
+
+RefineData:   Old code from attempt at organizing and plotting itrdb data. FacetRepeats.R and disturbanceHistoryPlot.R are better options. But this code does include some basic R function calls (mutate, if_else, summarize_all, assigning/removing rownames, full_join, and basic ggplotting....). Overall, outdated code.
+
+
+SC_Rpractice:   code from Software Carpentry Workshop. basic subsetting and ggplot practice, uses SC_practice gapminder data.
+
+
+Subset&Transform_ITRDBData:    Basic code I used to organize ITRDB data after downloading in chunks. includes rbind-ing chunks, and fixing various metadata including species name and spaces in siteID and state.
+
