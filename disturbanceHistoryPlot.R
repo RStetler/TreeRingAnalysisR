@@ -1,12 +1,13 @@
 rm(list = ls())
-setwd("C://Users/Ruth/My Documents/WVU_MA_Things/Thesis")
+setwd("C://Users/Ruth/My Documents/R/ITRDB_Plots")
 library(reshape2)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
 
-all <- read.csv("C://Users/Ruth/My Documents/WVU_MA_Things/Thesis/ITRDB Project/ITRDB_DataforPlots.csv", header = TRUE)
-dat <- read.csv("C://Users/Ruth/My Documents/WVU_MA_Things/Thesis/ITRDB Project/ITRDB_DatabySite.csv", header = TRUE)
+
+all <- read.csv("C://Users/Ruth/My Documents/R/ITRDB_Data/ITRDB_DataforPlots.csv", header = TRUE)
+dat <- read.csv("C://Users/Ruth/My Documents/R/ITRDB_Data/ITRDB_DatabySite.csv", header = TRUE)
 
 plotdata <- data.frame(siteID=dat$siteID, year=dat$Years, percreleased=dat$AllReleasesFreq)
 plot <- data.frame(unique(plotdata))

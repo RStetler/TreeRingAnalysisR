@@ -94,12 +94,22 @@ change <- read.csv("N://R_Files/Thesis/ga_change.csv", header = TRUE)
 
 
 ####################################
-##https://www1.ncdc.noaa.gov/pub/data/paleo/treering/measurements/northamerica/usa/wv003.rwl
-####link to QUPR crn from Fernow, WV
+library(httr)
+url <- "ftp://ftp.ncdc.noaa.gov/pub/data/paleo/treering/measurements/northamerica/usa/"
+####link to LITU crn from Scots Gap, TN  &  QUPR crn from Fernow, WV
+download.file("https://www1.ncdc.noaa.gov/pub/data/paleo/treering/measurements/northamerica/usa/tn.rwl", destfile="N://R_Files/Thesis/tn.rwl")
+download.file("https://www1.ncdc.noaa.gov/pub/data/paleo/treering/chronologies/northamerica/usa/wv003.crn", destfile="N://R_Files/Thesis/wv003.crn")
 
-##https://www1.ncdc.noaa.gov/pub/data/paleo/treering/measurements/northamerica/usa/tn.rwl
-####link to LITU crn from Scots Gap, TN
+qu <- read.crn("N://R_Files/Thesis/wv003.crn", header = TRUE)
+li <- read.rwl("N://R_Files/Thesis/tn.rwl", header = TRUE)
+licrn <- chron(li, prefix = "tn")
 
+## compare my crn's to standards above
+cfxli <- read.rwl("N://R_Files/Thesis/TreeMeans/CFXLI_mean.raw")
+cflicn <- chron(cfxli, prefix = "cfl")
+slwli <- read.rwl("N://R_Files/Thesis/TreeMeans/SLWLI_mean.raw")
+com2 <- combine.rwl(li, slwli)
+stat <- corr.rwl.seg(com2, seg.length = 50, pcrit = 0.01)
 
 ## Explore data w/ correlation and spag plot
 file <- "N://R_Files/Thesis/SLWLI.raw"
